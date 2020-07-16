@@ -1,0 +1,122 @@
+{% extends "footer_header.html" %} {% block content %}
+<p style="padding-left:500px"><i><b><h3>Một vài quy trình khám bệnh</h3></b></i></p>
+<div class="card-group">
+    <div class="card">
+        <br>
+        <p style="padding-left:120px"><i>Một số hình ảnh của khoa</i></p><br>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcScUJcLO1ASS_U83Oimsr6gO4UX0oLqnXVulWa5vcH6iKtkzzCK" class="card-img-top" alt="Cơ xương khớp" style="width:350px;height: 250px; padding-left:100px ;"><br><br>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTtlSl7JpPHQpr9auH5qiyltoFEpwGhEQ2KJY71pR-y9j8qkfei" class="card-img-top" alt="Cơ xương khớp" style="width:350px; height:300px; padding-left:100px ;"><br><br>
+        <div class="card-body">
+            <h5 class="card-title">Quy trình khám các bệnh về cơ xương khớp</h5>
+            <p class="card-text"> <i><b>Khám chữa bệnh cơ xương khớp</b></i> <br> Khoa cơ xương khớp thường xuyên áp dụng những kỹ thuật hiện đại trong chẩn đoán và điều trị như siêu âm khớp và phần mềm quanh khớp để chẩn đoán các bệnh: thoái hóa khớp, gút, viêm khớp dạng
+                thấp, viêm cột sống dính khớp, lupus ban đỏ hệ thống, loãng xương…; tiêm khớp, sinh thiết màng hoạt dịch khớp, chọc hút dịch, ổ viêm, áp xe dưới hướng dẫn của siêu âm. Nội soi khớp kết hợp sinh thiết màng hoạt dịch khớp để chẩn đoán các
+                bệnh như viêm khớp dạng thấp, lao, viêm MHD lông nốt sắc tố, u sụn màng hoạt dịch… cũng như làm sạch ổ khớp qua nội soi, lấy bỏ dị vật, u sụn màng hoạt dịch… để điều trị.
+                <br>
+                <b><i>Quy trình khám cơ xương khớp</i></b>
+                <form action="{{ url_for('XuongKhop') }}" method="POST">
+                    <button type="submit" value="submit">Thông tin quy trình</button>
+                </form>
+
+            </p>
+        </div>
+        <div class="card-footer">
+            <h3>Khoa Cơ xương khớp</h3>
+            <form action="{{ url_for('KhoaCoXuongKhop') }}" method="POST">
+                <button type="submit" value="submit">Tìm địa chỉ khoa</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <br>
+        <p style="padding-left:120px"><i>Một vài hình ảnh về khoa</i></p><br>
+
+        <img src="http://bachmai.gov.vn/images/stories/minh_duc/lam_sang/truyen_nhiem/tn2.jpg" class="card-img-top" alt="Siêu âm " style="width:350px; padding-left:100px ;">
+        <div class="card-body">
+            <h5 class="card-title">Quy trình khám các Bệnh nhiệt đới</h5>
+
+            <p class="card-text"> <i><b>Khám chữa bệnh nhiệt đới</b></i> <br>
+                <ul style="list-style-type:circle;">
+                    <li>
+                        Là tuyến cuối cùng trong công tác khám bệnh và điều trị các bệnh nhân mắc bệnh Truyền nhiễm.
+
+                    </li>
+                    <li>
+
+                        Tham gia phòng chống dịch bệnh, chỉ đạo tuyến.
+                    </li>
+                    <li>
+
+                        Nghiêm cứu khoa học và Hợp tác quốc tế.
+
+                    </li>
+                </ul><br>
+                <b><i>Quy trình khám Bệnh tại Trung tâm bệnh viện nhiệt đới</i></b>
+                <form action="{{ url_for('BenhVienNhietDoi') }}" method="POST">
+                    <button type="submit" value="submit">Thông tin quy trình</button>
+                </form>
+
+            </p>
+        </div>
+        <div class="card-footer">
+            <h3>Trung tâm bệnh viện nhiệt đới</h3>
+            <form action="{{ url_for('TTTBenhVienNhietDoi') }}" method="POST">
+                <button type="submit" value="submit">Tìm địa chỉ khoa</button>
+            </form>
+        </div>
+    </div>
+    <div class="card">
+        <br>
+        <p style="padding-left:120px"><i>Một vài hình ảnh của khoa</i></p>
+        <br>
+        <img src="http://bachmai.gov.vn/images/stories/minh_duc/lam_sang/tyc/noi_soi_tmh.jpg" class="card-img-top" alt="Nội soi tai mũi họng" style="width: 350px; padding-left:100px ;"><br><br>
+        <img src="http://bachmai.gov.vn/images/stories/minh_duc/lam_sang/tyc/noi_soi_tieu_hoa.jpg" class="card-img-top" alt="Nội soi tiêu hóa" style="width: 350px; padding-left:100px ;"><br><br>
+        <div class="card-body">
+            <h5 class="card-title">Quy trình khám chữa bệnh theo yêu cầu</h5>
+            <p class="card-text"><i><b>Khám chữa bệnh theo yêu cầu</b></i> <br>
+                <ul style="list-style-type:circle;">
+                    <li>
+                        Khám chữa bệnh ngoại trú cho nhân dân.
+
+                    </li>
+                    <li>
+
+                        Tư vấn, quản lý, giáo dục sức khoẻ.
+
+                    </li>
+                    <li>
+
+                        Khám sức khoẻ định kỳ cho các cơ quan, tập thể.
+                    </li>
+                    <li>Khám sức khoẻ cho người đi nước ngoài và những người nước ngoài đến làm việc tại Việt Nam.</li>
+                    <li>Tham gia các hoạt động của bệnh viện.</li>
+                    <li>Tham gia các hoạt động giảng dạy phối hợp với bệnh viện và trường Đại học Y Hà Nội</li>
+
+                </ul><br>
+                <b><i>Quy trình khám chữa bệnh theo yêu cầu</i></b>
+                <form action="{{ url_for('TheoYeuCau') }}" method="POST">
+                    <button type="submit" value="submit">Thông tin quy trình</button>
+                </form>
+
+            </p>
+        </div>
+        <div class="card-footer">
+            <h3>Khám chữa bệnh theo yêu cầu</h3>
+            <form action="{{ url_for('KhamChuaBenhTheoYeuCau') }}" method="POST">
+                <button type="submit" value="submit">Tìm địa chỉ khoa</button>
+            </form>
+        </div>
+    </div>
+</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" href="http://127.0.0.1:5000/">
+                <<</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="http://127.0.0.1:5000/Quytrinhkhamxuongkhop">2</a></li>
+        <li class="page-item"><a class="page-link" href="http://127.0.0.1:5000/Quytrinhkhambenhnhietdoi">3</a></li>
+        <li class="page-item"><a class="page-link" href="http://127.0.0.1:5000/Quytrinhkhambenhtheoyeucau">4</a></li>
+        <li class="page-item"><a class="page-link" href="http://127.0.0.1:5000/Quytrinhkhamxuongkhop">>></a></li>
+    </ul>
+</nav>
+{% endblock %}

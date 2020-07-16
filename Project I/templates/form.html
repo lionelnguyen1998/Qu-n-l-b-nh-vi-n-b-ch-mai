@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Intro - login page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<style>
+    .dropbtn {
+        background-color: #008000;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: 1px solid black;
+        cursor: pointer;
+        width: 300px;
+    }
+    
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #32CD32;
+        min-width: 300px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+    
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+        border: 1px solid black;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    .dropdown:hover .dropbtn {
+        background-color: #00FF00;
+        border: 1px solid black;
+    }
+    
+    .layout {
+        margin-top: 100px;
+        margin-left: 0%;
+    }
+    
+    .footer {
+        background-color: #e9d8f4;
+        color: darkslategray;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    * {
+        box-sizing: border-box
+    }
+    /* Slideshow container */
+    
+    .slideshow-container {
+        max-width: 500px;
+        position: relative;
+        margin: auto;
+    }
+    /* Ẩn các slider */
+    
+    .mySlides {
+        display: none;
+    }
+    /* Định dạng nội dung Caption */
+    
+    .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+    /* định dạng các chấm chuyển đổi các slide */
+    
+    .dot {
+        cursor: pointer;
+        height: 13px;
+        width: 13px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+    /* khi được hover, active đổi màu nền */
+    
+    .active,
+    .dot:hover {
+        background-color: #717171;
+    }
+    /* Thêm hiệu ứng khi chuyển đổi các slide */
+    
+    .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 3s;
+        animation-name: fade;
+        animation-duration: 3s;
+    }
+    
+    @-webkit-keyframes fade {
+        from {
+            opacity: .4
+        }
+        to {
+            opacity: 1
+        }
+    }
+    
+    @keyframes fade {
+        from {
+            opacity: .4
+        }
+        to {
+            opacity: 1
+        }
+    }
+</style>
+
+<body>
+
+    <img src="http://bachmai.gov.vn/images/TEST.jpg" style="max-width:100%;height:auto;">
+
+    <br><br>
+    <br>
+    <br>
+
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+            <img src="https://bookingcare.vn/files/image/2018/03/01/144506sodobvbachmai.jpg" alt="Sơ đồ bệnh viện Bạch Mai" style=" position:absolute;width:900px;height:500px">
+            <div class="text" style="color:black; position:absolute;margin-left:200px;"><b><i>Sơ đồ bệnh viện Bạch Mai</i></b></div>
+        </div>
+        <div class="mySlides fade">
+            <img src="http://bachmai.gov.vn/cache/mod_bt_contentslider/81ebbde55f4098f021dc9aee63a5b49a-0d1bd0cc0c2dd8faf3d7cda496a534f0.jpg" style=" position:absolute;width:800px;height:500px">
+            <div class="text" style="color:black; position:absolute;margin-left:200px;"><b><i>Cần trao quyền cho các bệnh viện về quyền tự chủ tài chính</i></b></div>
+        </div>
+
+        <div class="mySlides fade">
+            <img src="http://bachmai.gov.vn/cache/mod_bt_contentslider/1cae0d65e7802bbd13737fa209f01d0d-psan_6.jpg" style=" position:absolute;width:800px;height:500px">
+            <div class="text" style="color:black; position:absolute;margin-left:200px;"><b><i>Khoa phụ sản, Kỷ niệm 50 năm thành lập</i></b></div>
+        </div>
+    </div>
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+    <script>
+        //khai báo biến slideIndex đại diện cho slide hiện tại
+        var slideIndex;
+        // KHai bào hàm hiển thị slide
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            slides[slideIndex].style.display = "block";
+            dots[slideIndex].className += " active";
+            //chuyển đến slide tiếp theo
+            slideIndex++;
+            //nếu đang ở slide cuối cùng thì chuyển về slide đầu
+            if (slideIndex > slides.length - 1) {
+                slideIndex = 0
+            }
+            //tự động chuyển đổi slide sau 5s
+            setTimeout(showSlides, 3000);
+        }
+        //mặc định hiển thị slide đầu tiên 
+        showSlides(slideIndex = 0);
+
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+    </script>
+
+    <form action="{{ url_for('Vien') }}" method="POST">
+        <div class="dropdown">
+            <button class="dropbtn">Các Viện</button>
+            <div class="dropdown-content">
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/GiamDinhYKhoa">Viện giám định y khoa</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TamThan">Viện sức khỏe tâm thần</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TimMach">Viện Tim Mạch</a>
+            </div>
+        </div>
+    </form>
+    <br>
+    <form action="{{ url_for('TrungTam') }}" method="POST">
+        <div class="dropdown">
+            <button class="dropbtn">Trung Tâm Trực Thuộc</button>
+            <div class="dropdown-content">
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TTBenhVienNhietDoi">Trung tâm bệnh viện nhiệt đới</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TTChongDoc">Trung tâm Chống độc</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TTDaoTaoChiDaoTuyen">Trung tâm Đào tạo_Chỉ đạo tuyến</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TTDiUngMienDichLamSang">Trung tâm Dị ứng Miễn dịch Lâm sàng</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TTDienQuang">Trung tâm điện quang</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TTDinhDuongLamSang">Trung tâm Dĩnh dưỡng lâm sàng</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TTGiaiPhauBenh">Trung tâm giải phẫu bệnh</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TTHoHap">Trung tâm hô hấp</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TTHuyetHocVaTruyenMau">Trung tâm huyết học và truyền máu</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/TTPhucHoiChucNang">Trung tâm phục hồi chức năng</a>
+            </div>
+        </div>
+    </form>
+    <br>
+    <form action="{{ url_for('ChucNang') }}" method="POST">
+        <div class="dropdown">
+            <button class="dropbtn">Phòng Chức Năng</button>
+            <div class="dropdown-content">
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PBaoVe">Phòng Bảo vệ ANTT</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PCNTT">Phòng công nghệ thông tin</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PCTXH">Phòng công tác xã hội</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PDieuDuong">Phòng điều dưỡng</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PDoiNgoaiVaHopTacQuocTe">Phòng đối ngoại và hợp tác quốc tế</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PHanhChinhQuanTri">Phòng hành chính quản trị</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PKeHoachTongHop">Phòng kế hoạch tổng hợp</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PNghiemCuuKhoaHoc">Phòng Nghiêm cứu khoa học</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PQuanLyChatLuong">Phòng quản lý chất lượng</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PTaiChinhKeToan">Phòng Tài chính kế toán</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PToChucCanBo">Phòng tổ chức cán bộ</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/PVatTuThietBiYTe">Phòng Vật tư thiết bị y tế</a>
+
+            </div>
+        </div>
+    </form>
+    <br>
+    <form action="{{ url_for('CanLamSang') }}" method="POST">
+        <div class="dropdown">
+            <button class="dropbtn">Các Khoa Cận Lâm Sàng</button>
+            <div class="dropdown-content">
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaHoaSinh">Khoa Hóa Sinh</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaThamDoChucNang">Khoa Thăm dò chức năng</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaViSinh">Khoa Vi sinh</a>
+            </div>
+        </div>
+    </form>
+    <br>
+    <form action="{{ url_for('LamSang') }}" method="POST">
+        <div class="dropdown">
+            <button class="dropbtn">Các Khoa Lâm Sàng</button>
+            <div class="dropdown-content">
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaCapCuu">Khoa Cấp Cứu</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaChanThuong">Khoa chấn thương chỉnh hình và cột sống</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaCoXuongKhop">Khoa cơ xương khớp</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaDaLieu">Khoa da liễu</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaGayMe">Khoa Gây mê hồi sức</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaHoiSuc">Khoa Hồi sức tích cực</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhamChuaBenhTheoYeuCau">Khoa Khám chữa bệnh theo yêu cầu</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaMat">Khoa Mắt</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaNgoai">Khoa Ngoại tổng hợp</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaNhi">Khoa Nhi</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaNoiTietVaDaiThaoDuong">Khoa Nội tiết và Đái tháo đường</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaPhauThuat">Khoa Phẫu thuật thần kinh</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaPhuSan">Khoa Phụ sản</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaRangHamMat">Khoa Răng hàm mặt</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaTaiMuiHong">Khoa tai mũi họng</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaThanKinh">Khoa Thần kinh</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaThanNhanTao">Khoa Thận nhân tạo</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaThanTietNieu">Khoa Thận tiết niệu</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaTieuHoa">Khoa tiêu hóa</a>
+                <a class="dropdown-menu-md-right" href="http://127.0.0.1:5000/KhoaYHocCoTruyen">Khoa y học cổ truyền</a>
+            </div>
+        </div>
+    </form>
+    <br>
+    <br>
+    <br>
+    <br>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="page-link" href="http://127.0.0.1:5000">
+                    <<</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="http://127.0.0.1:5000/Motsoquytrinhkhambenh">1</a></li>
+            <li class="page-item"><a class="page-link" href="http://127.0.0.1:5000/Quytrinhkhamxuongkhop">2</a></li>
+            <li class="page-item"><a class="page-link" href="http://127.0.0.1:5000/Quytrinhkhambenhnhietdoi">3</a></li>
+            <li class="page-item"><a class="page-link" href="http://127.0.0.1:5000/Quytrinhkhambenhtheoyeucau">4</a></li>
+            <li class="page-item"><a class="page-link" href="http://127.0.0.1:5000/Motsoquytrinhkhambenh">>></a></li>
+        </ul>
+    </nav>
+
+    <div class="footer">
+        <h4>CỔNG THÔNG TIN ĐIỆN TỬ BỆNH VIỆN BẠCH MAI</h4>
+        <Pre>
+            Giấy phép số: 115/GP-BC do BVHTT cấp ngày 5/8/2005 
+            Chịu trách nhiệm chính: PGS/TS.BSCC. Nguyễn Quốc Anh - Giám đốc Bệnh viện Bạch Mai
+            Địa chỉ: 78 Đường Giải Phóng, Phương Mai, Đống Đa, Hà Nội - Tel: 844 3869 3731 -Fax: 844 3869 1067
+        </Pre>
+    </div>
+</body>
+
+</html>

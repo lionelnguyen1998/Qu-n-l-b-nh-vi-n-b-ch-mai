@@ -1,0 +1,21 @@
+{% extends "footer_header.html" %} {% block content %}
+<table>
+    <tr>
+        <th>Tên Trung Tâm</th>
+        <th>Địa chỉ</th>
+        <th>SĐT</th>
+        <th>Email</th>
+        <th>Website</th>
+    </tr>
+    {% for TenTrungTam,DiaChi,SĐT,Email,Website in rows %}
+    <tr>
+        <td>{{ TenTrungTam }}</td>
+        <td>{{ DiaChi }}</td>
+        <td>{{ SĐT }}</td>
+        <td>{{ Email}}</td>
+        <td>{{ Website}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
